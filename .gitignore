@@ -1,0 +1,11 @@
+# Ignore python cache
+__pycache__
+
+# Ignore IDEA
+.idea
+
+# Ignore poetry
+poetry.lock
+
+# Ignore voiced
+voice.wav
