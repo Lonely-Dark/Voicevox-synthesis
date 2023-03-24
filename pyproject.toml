@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "Simple voice synthesis from voicevox"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["vlad10game@gmail.com"]
 readme = "README.md"
@@ -10,9 +10,11 @@ python = "^3.11"
 pyaudio = "^0.2.13"
 speechrecognition = "^3.10.0"
 translatepy = "^2.3"
-voicevox-client = "0.1.4"
+voicevox-client = "0.1.5"
 simpleaudio = "^1.0.4"
 helperclass-pack = {git = "https://github.com/Lonely-Dark/helperclass-pack.git"}
+pytest = "^7.2.2"
+aiofile = "^3.8.5"
 
 
 [build-system]
