@@ -8,9 +8,10 @@
 import asyncio
 import logging
 
-import simpleaudio as sa
+import sounddevice as sd
 import speech_recognition as sr
 from aiofile import async_open
+import numpy as np
 from helperclass_pack import Helper
 from translatepy import Translator
 from translatepy.models import TranslationResult
@@ -45,16 +46,15 @@ class Recogniser:
         self.log.debug(f"Translated text: {translated}")
         return translated
 
-    async def synthesize(self, text: TranslationResult, voice_id: int = 1, filename: str = 'voice.wav') -> None:
+    async def synthesize(self, text: TranslationResult, voice_id: int = 1) -> np.ndarray:
         async with Client() as client:
             audio_query = await client.create_audio_query(text, speaker=voice_id)
-            async with async_open(filename, 'wb') as f:
-                await f.write(await audio_query.synthesis())
-            self.log.info(f"Synthesized {filename}")
+            numpy_audio = np.frombuffer(await audio_query.synthesis(), dtype=np.int32)
+            return numpy_audio
 
-    async def play(self, filename: str) -> None:
-        self.log.debug(f"Playing {filename}")
-        sa.WaveObject.from_wave_file(filename).play()
+    async def play(self, audio: np.ndarray, audiodevicename: str, samplerate: int) -> None:
+        sd.default.device = audiodevicename
+        sd.play(audio, samplerate=samplerate)
 
 
 async def main() -> None:
@@ -63,7 +63,7 @@ async def main() -> None:
     text: str = await recogniser.recognise(audio)
     translated: TranslationResult = await recogniser.translate(text)
     await recogniser.synthesize(translated, voice_id=1)
-    await recogniser.play('voice.wav')
+    await recogniser.play()
 
 
 if __name__ == '__main__':
