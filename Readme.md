@@ -6,8 +6,8 @@
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
-![GitHub repo size](https://img.shields.io/github/repo-size/Lonely-Dark/Voicevox-synthesis?style=flat-square)
-![GitHub](https://img.shields.io/github/license/Lonely-Dark/Voicevox-synthesis?style=flat-square)
+![GitHub repo size](https://img.shields.io/github/repo-size/Sirius-Bell/Voicevox-synthesis?style=flat-square)
+![GitHub](https://img.shields.io/github/license/Sirius-Bell/Voicevox-synthesis?style=flat-square)
 
 # Voicevox Synthesis
 This is a Python project that provides a simple way to perform voice synthesis using the Voicevox. The Voicevox is a text-to-speech synthesis engine developed by Hiho.

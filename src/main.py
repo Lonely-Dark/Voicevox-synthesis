@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
 
-# ---Lonely_Dark---
+# ---Sirius Bell---
 # Python 3.11
 
 
@@ -12,17 +12,17 @@ import sounddevice as sd
 import speech_recognition as sr
 from aiofile import async_open
 import numpy as np
-from helperclass_pack import Helper
 from translatepy import Translator
 from translatepy.models import TranslationResult
 from voicevox import Client
+from loguru import logger
 
 
 class Recogniser:
     def __init__(self) -> None:
         self.r = sr.Recognizer()
         self.tr = Translator()
-        self.log = Helper().logger
+        self.log = logger
         self.log.setLevel(logging.DEBUG)
 
         self.log.info("Initializing recogniser...")
